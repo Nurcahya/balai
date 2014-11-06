@@ -1,0 +1,126 @@
+<?php
+class Adminmodel extends CI_Model {
+
+    function __construct() {
+        parent::__construct();
+		$this->load->database();
+    }
+	
+	/*auth*/
+	function authmember() {
+		 $query = $this->db->query("select * from operator where username_operator='".$this->input->post('username')."' AND password_operator ='".md5($this->input->post('password'))."' LIMIT 1");
+		 if ($query->num_rows() == 1) 
+			{
+            return TRUE; 
+			}
+        else
+            {
+            return FALSE; 
+            }
+    }
+	
+		function get_member_by_uname($uname) {
+        $this->db->where('username_operator',$uname);
+		return $this->db->get('operator')->row_array();
+    }
+	
+	function findByEmail($email) {
+        $this->db->select('*');
+        $this->db->where('email', $email);
+        $query = $this->db->get('member', 1);
+
+        if ($query->num_rows() == 1) {
+            return $query->row_array();
+        }
+    }
+    
+	
+	function get_member_by_id($id) {
+        $this->db->where('id_member',$id);
+		return $this->db->get('member')->row_array();
+    }
+
+	function get_log($id) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from (select * from history_log where id_pos = '".$id."'  order by log desc limit 10) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+	
+	function get_table_log($id) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from history_log where id_pos = '".$id."'  order by log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+	
+	function get_table_date($id) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from (select * from history_log where id_pos = '".$id."'  order by log desc limit 10) a GROUP BY CAST(a.log AS DATE) order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+	
+	function export_table($id, $tgl){
+		$query = $this->db->query("select * from history_log where id_pos = '".$id."'  and CAST(log AS DATE)='".$tgl."' order by log asc");
+		return $query;
+	}
+	
+    function list_pos(){
+		$query = $this->db->query("SELECT a.nama_pos, a.id_pos, b.TMA, b.log, b.id_log
+		FROM pos a LEFT JOIN history_log b ON a.id_pos = b.id_pos
+		WHERE log IS NULL
+		OR log= (
+        SELECT MAX(log)
+        FROM history_log b2 
+        WHERE b2.id_pos = a.id_pos
+    )");
+        return $query;
+	}
+	
+	
+	function tabel_main1(){
+		$query = $this->db->query("SELECT a.nama_pos, a.alamat, b.TMA, b.log, b.id_log
+		FROM pos a LEFT JOIN history_log b ON a.id_pos = b.id_pos
+		WHERE log IS NULL
+		OR log= (
+        SELECT MAX(log)
+        FROM history_log b2 
+        WHERE b2.id_pos = a.id_pos
+    )");
+        return $query;
+	}
+
+	function tabel_main2(){
+		$query = $this->db->query("SELECT a.nama_pos, a.alamat, b.nilai, b.log, b.id_log_ch
+		FROM pos a LEFT JOIN history_curah_hujan b ON a.id_pos = b.id_pos
+		WHERE log IS NULL
+		OR log= (
+        SELECT MAX(log)
+        FROM history_curah_hujan b2 
+        WHERE b2.id_pos = a.id_pos
+    )");
+        return $query;
+	}
+	
+
+	function tabel_main3(){
+		$query = $this->db->query("SELECT a.nama_pos, a.alamat, b.nilai, b.log, b.id_log_vnotch, c.nama_vnotch
+		FROM pos a LEFT JOIN history_vnotch b ON a.id_pos = b.id_pos LEFT JOIN vnotch c ON b.id_vnotch = c.id_vnotch
+		WHERE log IS NULL
+		OR log= (
+        SELECT MAX(log)
+        FROM history_vnotch b2 
+        WHERE b2.id_pos = a.id_pos
+    )");
+        return $query;
+	}
+	function running_text() {
+	
+        $this->db->select('runtext');
+        $this->db->where('status_runtext','aktif');
+		return $this->db->get('runtext');
+	}
+	
+	
+}
