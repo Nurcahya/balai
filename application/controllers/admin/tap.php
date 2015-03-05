@@ -44,9 +44,9 @@ class Tap extends CI_Controller {
 		}
 		else {
 		$crud = new grocery_CRUD();
-		$crud->set_table('history_vr');
+		$crud->set_table('history_vw');
 		if (!empty($_GET['id'])){
-		$crud->where ('history_vr.id_pos', $_GET['id']);
+		$crud->where ('history_vw.id_pos', $_GET['id']);
 		}
 		$crud->set_relation('id_pos','pos','nama_pos');
     	$crud->order_by('log','desc');

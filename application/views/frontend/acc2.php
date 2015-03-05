@@ -34,7 +34,7 @@ function GetData() {
     data.shift();
  
     while (data.length < totalPoints) {     
-        var y = Math.random() * 50;
+        var y = 0;
         var temp = [now += updateInterval, y];
  
         data.push(temp);

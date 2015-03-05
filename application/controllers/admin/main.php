@@ -32,8 +32,8 @@ class Main extends CI_Controller {
 		}
 		else {
 		$data['tabel_main1']=$this->adminmodel->tabel_main1();
-		$data['tabel_main2']=$this->adminmodel->tabel_main2();
-		$data['tabel_main3']=$this->adminmodel->tabel_main3();
+		/*$data['tabel_main2']=$this->adminmodel->tabel_main2();
+		$data['tabel_main3']=$this->adminmodel->tabel_main3();*/
 		$data['runtext']=$this->adminmodel->running_text();
 		$data['current']="main";
 		$this->load->view('backend/main',$data);	

@@ -24,14 +24,7 @@
 
 	
 	<?php
-		$sql="SELECT a.nama_pos, a.alamat, a.lwl, a.hwl, a.crest, a.latitude, a.longitude, a.id_pos, b.TMA, b.log, b.id_log
-		FROM pos a LEFT JOIN history_log b ON a.id_pos = b.id_pos
-		WHERE log IS NULL
-		OR log= (
-        SELECT MAX(log)
-        FROM history_log b2 
-        WHERE b2.id_pos = a.id_pos
-    )"; 
+		$sql="SELECT * FROM pos INNER JOIN view_log USING (id_pos)"; 
 		$result=mysql_query($sql); 
 		$pos = array();
 		$no=0;

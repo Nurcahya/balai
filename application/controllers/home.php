@@ -67,7 +67,17 @@ class Home extends CI_Controller {
 		$data['list']=$this->usermodel->list_citra();
 		$this->load->view('frontend/tema/citra',$data);
 	}
-	
+	public function listing()
+	{
+		$this->load->view('frontend/list');
+	}
+
+	public function sublisting()
+	{
+		$data['id'] = $this->uri->segment(3);
+		$this->load->view('frontend/sublist',$data);
+	}
+		
 	public function tma()
 	{
 

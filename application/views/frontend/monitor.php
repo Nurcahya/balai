@@ -29,8 +29,22 @@ $this->load->view('frontend/tema/headermon');
 						</div>
 								<div>
 							<div id="myiframecontainer">									
-							<IFRAME id="vrframe" SRC=<?php echo site_url('monitor/vr1');?> width="100%" Height=237 frameborder=0></IFRAME> 
-								</div>
+							
+								
+
+							<?php if ($nama=="Jatiluhur") { ?>
+							<IFRAME id="vrframe" SRC=<?php echo site_url('monitor/vr1');?> width="100%" Height=237 frameborder=0></IFRAME> 	
+							<?php } else if ($nama=="Sempor") { ?>
+							<IFRAME id="vrframe" SRC=<?php echo site_url('monitor/vr2');?> width="100%" Height=237 frameborder=0></IFRAME> 	
+							<?php } else if ($nama=="Kedung Ombo") { ?>
+							<IFRAME id="vrframe" SRC=<?php echo site_url('monitor/vr3');?> width="100%" Height=237 frameborder=0></IFRAME>  	
+							<?php } else if ($nama=="Sermo") { ?>
+							<IFRAME id="vrframe" SRC=<?php echo site_url('monitor/vr4');?> width="100%" Height=237 frameborder=0></IFRAME> 	
+							<?php } else if ($nama=="Batutegi") { ?>
+							<IFRAME id="vrframe" SRC=<?php echo site_url('monitor/vr5');?> width="100%" Height=237 frameborder=0></IFRAME> 	
+							<?php } ?>
+
+							</div>
 							</div>			
 
 							&nbsp;
@@ -92,7 +106,9 @@ $this->load->view('frontend/tema/headermon');
 								<center><h3 style="font-weight:bold">DAM WATER LEVEL :
 								<?php 
 								foreach ($tma->result() as $tma) { 
-									$TMA =  $tma->TMA; }
+								$TMA =  $tma->TMA; }
+								$TMA = number_format($TMA, 2, '.', '');
+
 								echo $TMA; ?> m</h3></center>
 							<?php if ($nama=="Jatiluhur") { ?>
 							<IFRAME SRC=<?php echo site_url('home/tma');?> width=390 Height=330 frameborder=0></IFRAME> 	

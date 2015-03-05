@@ -111,6 +111,19 @@ class Usermodel extends CI_Model {
 			);
 			$this->db->insert('history_vw',$data_log);
 		} 
+
+	function insert_vr($a, $b, $c, $d)
+		{
+			$data_log = array(
+				'id_tap'		=> '',
+				'id_pos'		=> $a,
+				'id_vr'			=> $b,
+				'tap'			=> $c,
+				'log'			=> $d				
+				
+			);
+			$this->db->insert('history_vr',$data_log);
+		} 	
  
 
 	function insert_accel($a, $b, $c, $d)
@@ -125,7 +138,74 @@ class Usermodel extends CI_Model {
 			);
 			$this->db->insert('history_acc',$data_log);
 		}   
+
+/*----------------------------------------- update------------------------------------------------------------- */
 		
+		function update_log($a, $b, $c)
+		{
+			$data_log = array(
+				'id_pos'		=> $a,
+				'TMA'			=> $b,
+				'log'			=> $c				
+				
+			);
+			$this->db->where('id_pos', $a);
+			$this->db->update('view_log',$data_log);
+		}
+
+		function update_logger($a, $b, $c)
+		{
+			$data_log = array(
+				'id_logger'		=> $a,
+				'id_pos'			=> $b,
+				'log'			=> $c				
+				
+			);
+			$this->db->where('id_logger', $a);
+			$this->db->update('view_logger',$data_log);
+		}
+
+		function update_VW($a, $b, $c)
+		{
+			$data_log = array(
+				'id_pos'		=> $a,
+				'file_vw'		=> $b,
+				'log'			=> $c				
+				
+			);
+			$this->db->where('id_pos', $a);
+			$this->db->update('view_VW',$data_log);
+		}
+
+
+		function update_seepage($a, $b, $c,$d)
+		{
+			$data_log = array(
+				'id_pos'			=> $a,
+				'id_vnotch'			=> $b,
+				'nilai'			=> $c,
+				'log'			=> $d				
+				
+			);
+			$this->db->where('id_vnotch', $b);
+			$this->db->update('view_vnotch',$data_log);
+		}
+
+	 function update_citra($a, $b, $c)
+		{
+			$data_log = array(
+				'nama_citra'		=> $b,
+				'id_pos'			=> $a,
+				'log'			=> $c				
+				
+			);
+			$this->db->where('id_pos', $a);
+			$this->db->update('view_citra',$data_log);
+		}
+
+
+
+/*----------------------------------------- view--------------------------------------------------------------- */
      function list_pos(){
 		$query = $this->db->query("SELECT a.nama_pos, a.alamat, a.lwl, a.hwl, a.crest, b.TMA, b.log, b.id_log
 		FROM pos a LEFT JOIN history_log b ON a.id_pos = b.id_pos
@@ -139,13 +219,12 @@ class Usermodel extends CI_Model {
 	}
 
 	function list_tma($id){
-		$query = $this->db->query("SELECT *
-		FROM history_log
-		WHERE log = (
-        SELECT MAX(log)
-        FROM history_log b2 
-        WHERE b2.id_pos = '".$id."'
-    )  and id_pos = '".$id."'");
+		$query = $this->db->query("SELECT *	FROM view_log WHERE id_pos = '".$id."'");
+        return $query;
+	}
+
+	function list_vw($id){
+		$query = $this->db->query("SELECT *	FROM view_vw WHERE id_pos = '".$id."'");
         return $query;
 	}
 
@@ -156,39 +235,22 @@ class Usermodel extends CI_Model {
 	
 	
 	function list_tap($id){
-		$query = $this->db->query("SELECT a.id_vr, a.id_pos, b.tap, b.id_tap, b.log
-		FROM vr a LEFT JOIN history_vr b ON( a.id_pos = '$id' and a.id_vr = b.id_vr)
-		WHERE log = (
-        SELECT MAX(log)
-        FROM history_vr b2 
-        WHERE b2.id_pos ='$id' and a.id_vr = b2.id_vr
-    ) order by id_vr");
+		$query = $this->db->query("SELECT *	FROM (SELECT * FROM history_vr where id_pos = '$id' ORDER BY log DESC) as vr GROUP BY id_vr");
         return $query;
 	}
 
 	function list_logger($id){
 		$query = $this->db->query("SELECT a.id_logger, a.id_pos, b.id_log_logger, b.log, a.nama_logger
 		FROM logger a
-		LEFT JOIN history_logger b ON ( a.id_pos =  '$id'
+		INNER JOIN view_logger b ON ( a.id_pos =  '$id'
 		AND a.id_logger = b.id_logger ) 
-		WHERE log = ( 
-		SELECT MAX( log ) 
-		FROM history_logger b2
-		WHERE b2.id_pos =  '$id'
-		AND a.id_logger = b2.id_logger )  GROUP BY a.id_logger
-		ORDER BY id_logger 
+		ORDER BY id_logger
 		");
         return $query;
 	}
 
 	function list_vnotch($id){
-		$query = $this->db->query("SELECT a.id_vnotch, a.id_pos, b.nilai, b.id_log_vnotch, b.log
-		FROM vnotch a LEFT JOIN history_vnotch b ON( a.id_pos = '$id' and a.id_vnotch = b.id_vnotch)
-		WHERE log = (
-        SELECT MAX(log)
-        FROM history_vnotch b2 
-        WHERE b2.id_pos ='$id' and a.id_vnotch = b2.id_vnotch
-    ) order by id_vnotch");
+		$query = $this->db->query("SELECT * FROM `view_vnotch` WHERE id_pos = '$id' order by id_vnotch");
         return $query;
 	}
 
@@ -207,14 +269,7 @@ class Usermodel extends CI_Model {
 	}
 		
 	function citra_pos($id){
-		$query = $this->db->query("SELECT *
-		FROM history_citra
-		WHERE log IS NULL
-		OR log= (
-        SELECT MAX(log)
-        FROM history_citra b2 
-        WHERE b2.id_pos = '".$id."'
-    ) and id_pos = '".$id."'");
+		$query = $this->db->query("SELECT *	FROM view_citra	WHERE id_pos = '".$id."'");
         return $query;
 	}
 }

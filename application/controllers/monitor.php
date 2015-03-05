@@ -113,25 +113,32 @@ class Monitor extends CI_Controller {
 		$data['ch']=$this->usermodel->list_ch(5);
 		$this->load->view('frontend/monitor',$data);
 	}
+
+	public function coba()
+	{
+		
+		$data['tma']=$this->usermodel->list_tma(4);
+		$this->load->view('frontend/coba',$data);
+	}
 	
 	public function VR1(){
-		$data['list']=$this->usermodel->list_tap(1);
+		$data['list']=$this->usermodel->list_vw(1);
 		$this->load->view('frontend/vr',$data);
 	}
 	public function VR2(){
-		$data['list']=$this->usermodel->list_tap(2);
+		$data['list']=$this->usermodel->list_vw(2);
 		$this->load->view('frontend/vr',$data);
 	}
 	public function VR3(){
-		$data['list']=$this->usermodel->list_tap(3);
+		$data['list']=$this->usermodel->list_vw(3);
 		$this->load->view('frontend/vr',$data);
 	}
 	public function VR4(){
-		$data['list']=$this->usermodel->list_tap(4);
+		$data['list']=$this->usermodel->list_vw(4);
 		$this->load->view('frontend/vr',$data);
 	}
 	public function VR5(){
-		$data['list']=$this->usermodel->list_tap(5);
+		$data['list']=$this->usermodel->list_vw(5);
 		$this->load->view('frontend/vr',$data);
 	}
 }

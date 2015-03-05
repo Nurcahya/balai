@@ -52,9 +52,7 @@
             <ul class="nav nav-tabs nav-stacked">
             	<li class="nav-header">Navigasi</li>
                 <li <?php if ($current =="main"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/main"><span class="icon-align-justify"></span> Beranda</a></li>
-                <?php if ($this->session->userdata('hak_akses')==0){ ?>
-                <li <?php if ($current =="pos"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pos"><span class="icon-home"></span> Pos </a></li>
-                <?php } ?>
+                
 
                 <!-- grafik TMA -->
                 <?php if ($this->session->userdata('username_operator')=='jatiluhur'){ ?>
@@ -102,17 +100,17 @@
                 <?php } ?>
                 <!-- history TAP -->
                 <?php if ($this->session->userdata('username_operator')=='jatiluhur'){ ?>
-                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=1"><span class="icon-signal"></span> History Tekanan Air Pori</a></li>
+                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=1"><span class="icon-signal"></span> History Vibrating Wire</a></li>
                 <?php } else if ($this->session->userdata('username_operator')=='sempor'){ ?>
-                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=2"><span class="icon-signal"></span> History Tekanan Air Pori</a></li>
+                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=2"><span class="icon-signal"></span> History Vibrating Wire</a></li>
                 <?php } else if ($this->session->userdata('username_operator')=='kedungombo'){ ?>
-                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=3"><span class="icon-signal"></span> History Tekanan Air Pori</a></li>
+                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=3"><span class="icon-signal"></span> History Vibrating Wire</a></li>
                 <?php } else if ($this->session->userdata('username_operator')=='sermo'){ ?>
-                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=4"><span class="icon-signal"></span> History Tekanan Air Pori</a></li>
+                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=4"><span class="icon-signal"></span> History Vibrating Wire</a></li>
                 <?php } else if ($this->session->userdata('username_operator')=='batutegi'){ ?>
-                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=5"><span class="icon-signal"></span> History Tekanan Air Pori</a></li>
+                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=5"><span class="icon-signal"></span> History Vibrating Wire<a></li>
                 <?php } else { ?>
-                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=0"><span class="icon-signal"></span> History Tekanan Air Pori</a></li>
+                <li <?php if ($current == "tap"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/tap?id=0"><span class="icon-signal"></span> History Vibrating Wire</a></li>
                 <?php } ?>
 
                 <!-- citra -->
@@ -145,11 +143,35 @@
                 <li <?php if ($current == "sensorhis"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/sensorhis?id=0"><span class="icon-signal"></span> History Sensor</a></li>
                 <?php } ?>
 
+                <!-- pesan  -->
+                <?php if ($this->session->userdata('username_operator')=='jatiluhur'){ ?>
+                <li <?php if ($current == "pesan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pesan?id=1"><span class="icon-envelope"></span> Pesan</a></li>
+                <?php } else if ($this->session->userdata('username_operator')=='sempor'){ ?>
+                <li <?php if ($current == "pesan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pesan?id=2"><span class="icon-envelope"></span> Pesan</a></li>
+                <?php } else if ($this->session->userdata('username_operator')=='kedungombo'){ ?>
+                <li <?php if ($current == "pesan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pesan?id=3"><span class="icon-envelope"></span> Pesan</a></li>
+                <?php } else if ($this->session->userdata('username_operator')=='sermo'){ ?>
+                <li <?php if ($current == "pesan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pesan?id=4"><span class="icon-envelope"></span> Pesan</a></li>
+                <?php } else if ($this->session->userdata('username_operator')=='batutegi'){ ?>
+                <li <?php if ($current == "pesan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pesan?id=5"><span class="icon-envelope"></span> Pesanr</a></li>
+                <?php } else { ?>
+                <li <?php if ($current == "pesan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pesan?id=1"><span class="icon-envelope"></span> Pesan</a></li>
+                <?php } ?>
+
+                <?php if ($this->session->userdata('hak_akses')==0){ ?>
+                <li <?php if ($current =="pos"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/pos"><span class="icon-home"></span> Pos </a></li>
+                <?php } ?>
                 <?php if ($this->session->userdata('hak_akses')==0){ ?>
                 <li <?php if ($current == "logger"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/logger"><span class="icon-tasks"></span> Logger</a></li>
                 <?php } ?>
                 <?php if ($this->session->userdata('hak_akses')==0){ ?>
                 <li <?php if ($current == "sensor"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/sensor"><span class="icon-tasks"></span> Sensor</a></li>
+                <?php } ?>
+                 <?php if ($this->session->userdata('hak_akses')==0){ ?>
+                <li <?php if ($current == "ftpcitra"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/ftpcitra"><span class="icon-tasks"></span> Backup FTP Citra</a></li>
+                <?php } ?>
+                <?php if ($this->session->userdata('hak_akses')==0){ ?>
+                <li <?php if ($current == "ftvwp"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/ftpvw"><span class="icon-tasks"></span> Backup FTP Vibrating Wire</a></li>
                 <?php } ?>
                 <?php if ($this->session->userdata('hak_akses')==0){ ?>
                 <li <?php if ($current == "user"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/user"><span class="icon-user"></span> User</a></li>
@@ -177,7 +199,7 @@
             <div class="headerright">
                            
     			<div class="dropdown userinfo">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="/page.html">Hi, <?php echo $this->session->userdata('username_operator'); ?> <b class="caret"></b></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="/page.html">Selamat datang, <?php echo $this->session->userdata('username_operator'); ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <!--<li><a href="editprofile.html"><span class="icon-edit"></span> Edit Profile</a></li>
                         <li><a href=""><span class="icon-wrench"></span> Account Settings</a></li>

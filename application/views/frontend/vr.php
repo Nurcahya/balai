@@ -51,21 +51,78 @@
 <colgroup><col /><col /><col /><col /><col /><col /></colgroup>
 	<thead>
 		<tr>
-			<th><strong>VR</strong></th>
+			<th><strong>No</strong></th>
 			<th><strong>Tekanan Air</strong></th>
 			<th><strong>Waktu</strong></th>
 		</tr>
 	</thead>
 	<tbody>
-	<?php foreach($list->result() as $list) { ?>
-	
+	<?php 
+	foreach($list->result() as $list) { 
+	if ($list->file_vw==""){
+	?>
 		<tr class="odd gradeX">
-			<td><?php echo $list->id_vr; ?></td>
-			<td><?php echo $list->tap; ?> MPa</td>
+			<td>1</td>
+			<td>0 MPa</td>
+			<td>0000-00-00 00:00:00</td>	
+		</tr>	
+		<tr class="odd gradeX">
+			<td>2</td>
+			<td>0 MPa</td>
+			<td>0000-00-00 00:00:00</td>	
+		</tr>	
+		<tr class="odd gradeX">
+			<td>3</td>
+			<td>0 MPa</td>
+			<td>0000-00-00 00:00:00</td>	
+		</tr>	
+		<tr class="odd gradeX">
+			<td>4</td>
+			<td>0 MPa</td>
+			<td>0000-00-00 00:00:00</td>	
+		</tr>	
+		<tr class="odd gradeX">
+			<td>5</td>
+			<td>0 MPa</td>
+			<td>0000-00-00 00:00:00</td>	
+		</tr>	
+		<tr class="odd gradeX">
+			<td>6</td>
+			<td>0 MPa</td>
+			<td>0000-00-00 00:00:00</td>	
+		</tr>	
+	<?php
+	}
+	else{
+	
+		$file = fopen("http://36.78.163.102/balai/assets/upload/vr/".$list->file_vw,"r");
+			
+		$row = 1;
+		if (($handle = $file) !== FALSE) {
+		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+			if($row == 1){ $row++; continue; }
+		    $num = count($data);
+		           $row++;
+		    for ($c=0; $c < $num-1; $c++) {
+		    $c++;
+		 ?>
+		 
+		<tr class="odd gradeX">
+			<td><?php echo $data[0]; ?></td>
+			<td><?php echo $data[1]; ?> MPa</td>
 			<td><?php echo $list->log; ?></td>	
 		</tr>	
+		  <?php 
+
+		    }
+		}
+		fclose($handle);
+
+
+		}
+
+	 } } ?>
 	
-	<?php } ?>
 	</tbody>
 </table>
 </div>

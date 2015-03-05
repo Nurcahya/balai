@@ -22,7 +22,7 @@ $this->load->view('backend/tema/header');
                        <h4 class="widgettitle">Grafik TMA</h4>
                         <div class="widgetcontent">
 						 
-						 <IFRAME SRC="<?php echo base_url('admin/grafik/grafikposframe');?>/<?php echo $this->uri->segment(4); ?>" WIDTH=100% height=300 ></IFRAME> 
+						 <IFRAME SRC="<?php echo base_url('admin/grafik/grafikpos');?>/<?php echo $this->uri->segment(4); ?>" WIDTH=100% height=300 ></IFRAME> 
 		                        	          
                         </div><!--widgetcontent-->
                         

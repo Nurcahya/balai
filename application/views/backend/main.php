@@ -33,8 +33,6 @@ $this->load->view('backend/tema/header');
                             <div id="tabs">
                                 <ul>
                                     <li><a href="#tabs-1"><span class="icon-forward"></span> Tinggi Muka Air</a></li>
-                                    <li><a href="#tabs-2"><span class="icon-eye-open"></span> Curah Hujan</a></li>
-                                    <li><a href="#tabs-3"><span class="icon-leaf"></span> Seepage</a></li>
                                 </ul>
                                 <div id="tabs-1">
 								
@@ -62,52 +60,7 @@ $this->load->view('backend/tema/header');
 								
 									
                                 </div>
-                                <div id="tabs-2">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama Bendungan</th>
-                                                <th>Lokasi</th>
-                                                <th>Nilai</th>
-                                                <th class="center">Tanggal Log</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                          <?php foreach ($tabel_main2->result() as $tm2){ ?>
-                                            <tr>									
-                                                <td><strong><?php echo $tm2->nama_pos; ?></strong></td>
-                                                <td><?php echo $tm2->alamat; ?></td>
-                                                <td><?php echo $tm2->nilai; ?> mm</td>
-                                                <td><?php echo $tm2->log; ?></td>
-											
-                                            </tr><?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="tabs-3">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama Bendungan</th>
-                                                <th>Lokasi</th>
-                                                <th>Seepage</th>
-                                                <th>Nilai</th>
-                                                <th class="center">Tanggal Log</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                          <?php foreach ($tabel_main3->result() as $tm3){ ?>
-                                            <tr>									
-                                                <td><strong><?php echo $tm3->nama_pos; ?></strong></td>
-                                                <td><?php echo $tm3->alamat; ?></td>
-                                                <td><?php echo $tm3->nama_vnotch; ?></td>
-                                                <td><?php echo $tm3->nilai; ?> Meter</td>
-                                                <td><?php echo $tm3->log; ?></td>
-											
-                                            </tr><?php } ?>
-                                        </tbody>
-                                    </table> 
-                                </div>
+                               
                             </div><!--#tabs-->
                         </div><!--widgetcontent-->
                         

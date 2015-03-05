@@ -67,27 +67,13 @@ class Adminmodel extends CI_Model {
 	}
 	
     function list_pos(){
-		$query = $this->db->query("SELECT a.nama_pos, a.id_pos, b.TMA, b.log, b.id_log
-		FROM pos a LEFT JOIN history_log b ON a.id_pos = b.id_pos
-		WHERE log IS NULL
-		OR log= (
-        SELECT MAX(log)
-        FROM history_log b2 
-        WHERE b2.id_pos = a.id_pos
-    )");
+		$query = $this->db->query("SELECT *	FROM view_log INNER JOIN pos USING (id_pos)  ");
         return $query;
 	}
 	
 	
 	function tabel_main1(){
-		$query = $this->db->query("SELECT a.nama_pos, a.alamat, b.TMA, b.log, b.id_log
-		FROM pos a LEFT JOIN history_log b ON a.id_pos = b.id_pos
-		WHERE log IS NULL
-		OR log= (
-        SELECT MAX(log)
-        FROM history_log b2 
-        WHERE b2.id_pos = a.id_pos
-    )");
+		$query = $this->db->query("SELECT *	FROM view_log INNER JOIN pos USING (id_pos)");
         return $query;
 	}
 
@@ -102,17 +88,10 @@ class Adminmodel extends CI_Model {
     )");
         return $query;
 	}
-	
+
 
 	function tabel_main3(){
-		$query = $this->db->query("SELECT a.nama_pos, a.alamat, b.nilai, b.log, b.id_log_vnotch, c.nama_vnotch
-		FROM pos a LEFT JOIN history_vnotch b ON a.id_pos = b.id_pos LEFT JOIN vnotch c ON b.id_vnotch = c.id_vnotch
-		WHERE log IS NULL
-		OR log= (
-        SELECT MAX(log)
-        FROM history_vnotch b2 
-        WHERE b2.id_pos = a.id_pos
-    )");
+		$query = $this->db->query("SELECT * FROM `view_vnotch` INNER JOIN pos USING (id_pos) INNER JOIN vnotch USING (id_vnotch) order by id_vnotch ");
         return $query;
 	}
 	function running_text() {
