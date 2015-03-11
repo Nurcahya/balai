@@ -46,6 +46,13 @@ class Adminmodel extends CI_Model {
        // $this->db->limit(10);
 		return $query;
     }
+
+	function get_curah($id) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from (select * from history_curah_hujan where id_pos = '".$id."'  order by log desc limit 10) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
 	
 	function get_table_log($id) {
         //$this->db->where('id_pos',$id);
@@ -67,10 +74,19 @@ class Adminmodel extends CI_Model {
 	}
 	
     function list_pos(){
-		$query = $this->db->query("SELECT *	FROM view_log INNER JOIN pos USING (id_pos)  ");
+		$query = $this->db->query("SELECT id_pos, nama_pos, max(log) as log FROM history_log INNER JOIN pos USING (id_pos)  group by pos.id_pos");
+        return $query;
+	}
+
+	function list_posch(){
+		$query = $this->db->query("SELECT id_pos, nama_pos, max(log) as log FROM history_curah_hujan INNER JOIN pos USING (id_pos)  group by pos.id_pos");
         return $query;
 	}
 	
+	function list_posvn(){
+		$query = $this->db->query("SELECT id_pos, nama_pos, max(log) as log FROM history_vnotch INNER JOIN pos USING (id_pos)  group by pos.id_pos");
+        return $query;
+	}
 	
 	function tabel_main1(){
 		$query = $this->db->query("SELECT *	FROM view_log INNER JOIN pos USING (id_pos)");

@@ -25,7 +25,9 @@ $this->load->view('backend/tema/header');
         
         <div class="maincontent">
         	<div class="contentinner">
-			 <form action="<?php echo site_url();?>admin/vnotchhis/tangkapgridsearch/<?php echo $_GET['id']; ?>" method="post" id="moodleform" target="iframe">
+                  <div class="row-fluid">
+                     <div class="span8" style="margin:10">
+			          <form action="<?php echo site_url();?>admin/vnotchhis/tangkapgridsearch/<?php echo $_GET['id']; ?>" method="post" id="moodleform" target="iframe">
                             <table border="0" width="50%">
                                 <tr>
                                 <td><p>Tanggal Mulai: <input type="text" name="tglmulai" id="datepicker"></p></td>
@@ -36,7 +38,35 @@ $this->load->view('backend/tema/header');
                         </form>
 			
 			<IFRAME name="iframe" SRC=<?php echo base_url('admin/vnotchhis/grid?id='.$_GET['id']);?> WIDTH=100% Height=800></IFRAME>
-            </div><!--contentinner-->
+            </div>
+
+            <?php if ($this->session->userdata('hak_akses')==0){ ?>
+                    <div class="span4">
+                        <h4 class="widgettitle nomargin">Daftar Pos</h4>
+                        <div class="widgetcontent bordered">
+                           <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Pos</th>
+                                                <th>Update Terakhir</th>
+                                                <!--<th>Request Data</th>-->
+                                            </tr>
+                                        </thead>                        
+                                       <tbody>
+                                          <?php foreach ($list_pos->result() as $lp){ ?>
+                                            <tr>
+                                                <td><a href="<?php echo site_url();?>admin/vnotchhis?id=<?php echo $lp->id_pos; ?>"><strong><?php echo $lp->nama_pos; ?></strong></a></td>
+                                                <td><?php echo $lp->log; ?></td>
+                                                <!--<td><a href="<?php echo site_url();?>admin/grafik/req/<?php echo $lp->id_pos; ?>">Request</a></td>-->
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                        </div><!--widgetcontent-->
+                    </div><!--span4-->
+                     <?php } ?>
+            </div>
+        </div><!--contentinner-->
         </div><!--maincontent-->
         
     </div><!--mainright-->

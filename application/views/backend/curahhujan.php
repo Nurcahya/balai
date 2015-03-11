@@ -23,8 +23,49 @@ $this->load->view('backend/tema/header');
         	<h1>Curah Hujan</h1> <span>Halaman history curah hujan</span>
         </div><!--pagetitle-->
         
+
         <div class="maincontent">
         	<div class="contentinner">
+      
+                <div class="row-fluid">
+        <div class="span8">
+                    <h4 class="widgettitle">Grafik TMA</h4>
+                        <div class="widgetcontent">
+                         
+                         <IFRAME SRC="<?php echo base_url('admin/curahhujan/grafikpos');?>/<?php echo $this->session->userdata('id'); ?>" WIDTH=100% height=300 ></IFRAME> 
+                                              
+                        </div><!--widgetcontent-->
+                      
+                    </div><!--span8-->
+
+        <?php if ($this->session->userdata('hak_akses')==0){ ?>
+                    <div class="span4">
+                        <h4 class="widgettitle nomargin">Daftar Pos</h4>
+                        <div class="widgetcontent bordered">
+                           <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Pos</th>
+                                                <th>Update Terakhir</th>
+                                                <!--<th>Request Data</th>-->
+                                            </tr>
+                                        </thead>                        
+                                       <tbody>
+                                         <?php foreach ($list_pos->result() as $lp){ ?>
+                                            <tr>
+                                                <td><a href="<?php echo site_url();?>admin/curahhujan?id=<?php echo $lp->id_pos; ?>"><strong><?php echo $lp->nama_pos; ?></strong></a></td>
+                                                <td><?php echo $lp->log; ?></td>
+                                                <!--<td><a href="<?php echo site_url();?>admin/grafik/req/<?php echo $lp->id_pos; ?>">Request</a></td>-->
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                        </div><!--widgetcontent-->
+                    </div><!--span4-->
+                     <?php } ?>
+
+                     <div class="span12" style="margin:0">
+                        <h4 class="widgettitle">Detail </h4>
 			 <form action="<?php echo site_url();?>admin/curahhujan/tangkapgridsearch/<?php echo $_GET['id']; ?>" method="post" id="moodleform" target="iframe">
                             <table border="0" width="50%">
                                 <tr>
@@ -35,7 +76,9 @@ $this->load->view('backend/tema/header');
                             </table>
                         </form>
 			
+                    </div>
 			<IFRAME name="iframe" SRC=<?php echo base_url('admin/curahhujan/grid?id='.$_GET['id']);?> WIDTH=100% Height=800></IFRAME>
+                 </div>
             </div><!--contentinner-->
         </div><!--maincontent-->
         

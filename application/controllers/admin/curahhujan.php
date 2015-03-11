@@ -33,6 +33,7 @@ class Curahhujan extends CI_Controller {
 		else {
 		$data['runtext']=$this->adminmodel->running_text();
 		$data['current']="curahhujan";
+		$data['list_pos']=$this->adminmodel->list_posch();
 		$sesiid = array(
 						'id' 	=> $_GET['id']
 						);
@@ -93,5 +94,14 @@ function gridsearch()
 		$output = $crud->render();
 		$this->load->view('backend/grid',$output);
 	}
+
+function grafikpos()
+	{
+		$id = $this->uri->segment(4);
+		$data['log']=$this->adminmodel->get_curah($id);
+		$data['runtext']=$this->adminmodel->running_text();
+		$this->load->view('backend/grafikposch',$data);
+	}
+	
 		
 }

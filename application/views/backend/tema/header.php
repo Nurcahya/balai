@@ -81,7 +81,7 @@
                 <?php } else if ($this->session->userdata('username_operator')=='batutegi'){ ?>
                 <li <?php if ($current == "curahhujan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/curahhujan?id=5"><span class="icon-signal"></span> History Curah Hujan</a></li>
                 <?php } else { ?>
-                <li <?php if ($current == "curahhujan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/curahhujan?id=0"><span class="icon-signal"></span> History Curah Hujan</a></li>
+                <li <?php if ($current == "curahhujan"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/curahhujan?id=1"><span class="icon-signal"></span> History Curah Hujan</a></li>
                 <?php } ?>
 
                 <!-- history vnotch -->

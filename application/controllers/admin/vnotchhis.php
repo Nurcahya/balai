@@ -33,6 +33,7 @@ class Vnotchhis extends CI_Controller {
 		else {
 		$data['runtext']=$this->adminmodel->running_text();
 		$data['current']="vnotchhis";
+		$data['list_pos']=$this->adminmodel->list_posvn();
 		$sesiid = array(
 						'id' 	=> $_GET['id']
 						);
