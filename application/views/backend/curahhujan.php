@@ -1,0 +1,92 @@
+<?php
+$this->load->view('backend/tema/header');
+
+?>
+	
+
+    	</div><!--headerpanel-->
+        <div class="breadcrumbwidget">
+        	<ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+        	<ul class="breadcrumb">
+                <li><a href="<?php echo base_url('admin/main')?>">Home</a> <span class="divider">/</span></li>
+                <li class="active">History Curah Hujan</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+        	<h1>Curah Hujan</h1> <span>Halaman history curah hujan</span>
+        </div><!--pagetitle-->
+        
+
+        <div class="maincontent">
+        	<div class="contentinner">
+      
+                <div class="row-fluid">
+        <div class="span8">
+                    <h4 class="widgettitle">Grafik TMA</h4>
+                        <div class="widgetcontent">
+                         
+                         <IFRAME SRC="<?php echo base_url('admin/curahhujan/grafikpos');?>/<?php echo $this->session->userdata('id'); ?>" WIDTH=100% height=300 ></IFRAME> 
+                                              
+                        </div><!--widgetcontent-->
+                      
+                    </div><!--span8-->
+
+        <?php if ($this->session->userdata('hak_akses')==0){ ?>
+                    <div class="span4">
+                        <h4 class="widgettitle nomargin">Daftar Pos</h4>
+                        <div class="widgetcontent bordered">
+                           <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Pos</th>
+                                                <th>Update Terakhir</th>
+                                                <!--<th>Request Data</th>-->
+                                            </tr>
+                                        </thead>                        
+                                       <tbody>
+                                         <?php foreach ($list_pos->result() as $lp){ ?>
+                                            <tr>
+                                                <td><a href="<?php echo site_url();?>admin/curahhujan?id=<?php echo $lp->id_pos; ?>"><strong><?php echo $lp->nama_pos; ?></strong></a></td>
+                                                <td><?php echo $lp->log; ?></td>
+                                                <!--<td><a href="<?php echo site_url();?>admin/grafik/req/<?php echo $lp->id_pos; ?>">Request</a></td>-->
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                        </div><!--widgetcontent-->
+                    </div><!--span4-->
+                     <?php } ?>
+
+                     <div class="span12" style="margin:0">
+                        <h4 class="widgettitle">Detail </h4>
+			 <form action="<?php echo site_url();?>admin/curahhujan/tangkapgridsearch/<?php echo $_GET['id']; ?>" method="post" id="moodleform" target="iframe">
+                            <table border="0" width="50%">
+                                <tr>
+                                <td><p>Tanggal Mulai: <input type="text" name="tglmulai" id="datepicker"></p></td>
+                                <td><p>Tanggal Berakhir: <input type="text" name="tglakhir" id="datepicker2"></p></td>
+                                <td><input type="submit" value="Filter"></td>
+                                <td><a href="<?php echo site_url();?>admin/curahhujan/grid/<?php echo $_GET['id']; ?>" target="iframe"><input type="button" value="Reset Filter"></a></td>
+                            </table>
+                        </form>
+			
+                    </div>
+			<IFRAME name="iframe" SRC=<?php echo base_url('admin/curahhujan/grid?id='.$_GET['id']);?> WIDTH=100% Height=800></IFRAME>
+                 </div>
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+
+<?php
+$this->load->view('backend/tema/footer');
+
+?>
