@@ -45,7 +45,6 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data['total']=$this->usermodel->tot_data();
-		$data['list']=$this->usermodel->list_pos();
 		$this->load->view('frontend/main',$data);
 	}
 	
@@ -128,7 +127,46 @@ class Home extends CI_Controller {
 		$data['crest']='283.0';
 		$this->load->view('frontend/tma',$data);
 	}
-	
+	public function tma6()
+	{
+
+		$data['tma']=$this->usermodel->list_tma(6);
+		$data['id_pos']='6';
+		$data['LWL']='208.0';
+		$data['HWL']='274.0';
+		$data['crest']='283.0';
+		$this->load->view('frontend/tma',$data);
+	}
+	public function tma7()
+	{
+
+		$data['tma']=$this->usermodel->list_tma(7);
+		$data['id_pos']='7';
+		$data['LWL']='208.0';
+		$data['HWL']='274.0';
+		$data['crest']='283.0';
+		$this->load->view('frontend/tma',$data);
+	}
+	public function tma8()
+	{
+
+		$data['tma']=$this->usermodel->list_tma(8);
+		$data['id_pos']='8';
+		$data['LWL']='208.0';
+		$data['HWL']='274.0';
+		$data['crest']='283.0';
+		$this->load->view('frontend/tma',$data);
+	}
+	public function tma9()
+	{
+
+		$data['tma']=$this->usermodel->list_tma(9);
+		$data['id_pos']='9';
+		$data['LWL']='208.0';
+		$data['HWL']='274.0';
+		$data['crest']='283.0';
+		$this->load->view('frontend/tma',$data);
+	}
 	public function acc()
 	{
 		$this->load->view('frontend/acc');

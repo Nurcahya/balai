@@ -90,7 +90,6 @@ function grafikpos()
 		$id = $this->uri->segment(4);
 		$data['log']=$this->adminmodel->get_curah($id);
 		$this->load->view('backend/grafikposch',$data);
-	}
-	
+	}	
 		
 }

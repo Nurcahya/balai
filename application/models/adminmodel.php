@@ -42,28 +42,64 @@ class Adminmodel extends CI_Model {
 
 	function get_log($id) {
         //$this->db->where('id_pos',$id);
-		$query = $this->db->query("select * from (select * from history_log where id_pos = '".$id."'  order by log desc limit 10) a order by a.log asc");
+		$query = $this->db->query("select * from (select * from history_log where id_pos = '".$id."'  order by log desc) a order by a.log asc");
        // $this->db->limit(10);
 		return $query;
     }
 
 	function get_curah($id) {
         //$this->db->where('id_pos',$id);
-		$query = $this->db->query("select * from (select * from history_curah_hujan where id_pos = '".$id."'  order by log desc limit 10) a order by a.log asc");
+		$query = $this->db->query("select * from (select * from history_curah_hujan where id_pos = '".$id."'  order by log desc) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+
+	function get_log_front($id) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from (select * from history_log where id_pos = '".$id."'  order by log desc limit 144) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+
+	function get_curah_front($id) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from (select * from history_curah_hujan where id_pos = '".$id."'  order by log desc limit 144) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+    function get_vw($id, $id_vr) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from (select * from history_vr where id_pos='".$id."' and id_vr = '".$id_vr."'  order by log desc) a order by a.log asc");
        // $this->db->limit(10);
 		return $query;
     }
 
     function get_vnotch($id, $id_vnotch) {
         //$this->db->where('id_pos',$id);
-		$query = $this->db->query("select * from (select * from history_vnotch where id_pos = '".$id."' and id_vnotch = '".$id_vnotch."' order by log desc limit 10) a order by a.log asc");
+		$query = $this->db->query("select * from (select * from history_vnotch where id_pos = '".$id."' and id_vnotch = '".$id_vnotch."' order by log desc) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+
+    function get_vnotch_front($id, $id_vnotch) {
+        //$this->db->where('id_pos',$id);
+		$waktu = date("Y-m-d H:i:s");
+		$interval = date('Y-m-d H:i:s', strtotime($waktu . ' - 1 day'));
+		$query = $this->db->query("select * from (select * from history_vnotch where id_pos = '".$id."' and id_vnotch = '".$id_vnotch."' and log < '".$interval."'  order by log desc) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+
+	function get_vw_jum($id) {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select a.id_vr, COUNT(a.id_vr) from (select * from history_vr where id_pos = '".$id."' order by log desc ) a group by a.id_vr order by a.id_vr desc, a.log asc");
        // $this->db->limit(10);
 		return $query;
     }
 
     function get_vnotch_jum($id) {
         //$this->db->where('id_pos',$id);
-		$query = $this->db->query("select a.id_vnotch, COUNT(a.id_vnotch) from (select * from history_vnotch where id_pos = '".$id."' order by log desc limit 10) a group by a.id_vnotch order by a.id_vnotch asc, a.log asc");
+		$query = $this->db->query("select a.id_vnotch, COUNT(a.id_vnotch) from (select * from history_vnotch where id_pos = '".$id."' order by log desc limit 144) a group by a.id_vnotch order by a.id_vnotch asc, a.log asc");
        // $this->db->limit(10);
 		return $query;
     }

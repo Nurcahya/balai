@@ -219,7 +219,8 @@ pre {
 /*navigation*/
 .navbar {
   border: 0;
-  background-color: #2494F2;
+  /*background-color: #2494F2;*/
+  background-image:  linear-gradient(to bottom, #1696E7 45%, #040A3C 102%);
   color: #FFF;
   float:right;
   padding-left: 10px;
@@ -636,10 +637,7 @@ body.modal-open,
 }
 /*BODY*/
 .cl-mcont {
-  background-color: #F6F6F6;
-background-image: url('http://2.bp.blogspot.com/-W2AoFtZLtV8/UOox0j_uIwI/AAAAAAAADZw/YQQeiIfLpw8/s1600/wadasl.jpg');
-background-size: 100% 100%;
-background-attachment: fixed;
+
   color: inherit;
   font-size: 13px;
   font-weight: 200;
@@ -953,6 +951,10 @@ body {
   width: 100%;
   position: absolute;
   height: 100%;
+background-color: #F6F6F6;
+background-image: url('http://2.bp.blogspot.com/-W2AoFtZLtV8/UOox0j_uIwI/AAAAAAAADZw/YQQeiIfLpw8/s1600/wadasl.jpg');
+background-size: 100% 100%;
+background-attachment: fixed;
 }
 .cl-sidebar {
   display: table-cell;
@@ -974,7 +976,6 @@ body {
 .cl-mcont .block {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.13);
   border: 0;
-  margin-bottom: 30px;
   background: #FFF;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -2348,7 +2349,7 @@ div.dataTables_length label select {
   background-color: #3290E2;
   font-family: 'Arial black';
 font-size: 13pt;
-line-height: 0.8;
+line-height: 1.1;
   color:white;
   padding-left: 3%;
 	padding-top: 3%;
@@ -2544,7 +2545,7 @@ line-height: 0.8;
 .widget-block {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.21);
   border: 0;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 0;
 }
 .widget-block .row {

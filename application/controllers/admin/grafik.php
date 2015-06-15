@@ -127,8 +127,53 @@ function gridsearch()
 	function grafikpos()
 	{
 		$id = $this->uri->segment(4);
+		$data['log']=$this->adminmodel->get_log_front($id);
+		$data['curah']=$this->adminmodel->get_curah_front($id);
+		$data['jum']=$this->adminmodel->get_vw_jum($id);
+		$this->load->view('backend/test/head');
+		for ($i = 1; $i<= 50; $i = $i+5){
+
+		$no = 0;
+			foreach ($data['jum']->result() as $jum){
+				$no = $no + 1; 
+				$data['vw'.$no.'']=$this->adminmodel->get_vw($id,$jum->id_vr);
+			}
+		$data['kode']="chartplace".$i;
+		$this->load->view('backend/test/body',$data);
+		
+	}
+	
+	
+	$this->load->view('backend/test/foot');
+	}
+
+	function grafiktma()
+	{
+		$id = $this->uri->segment(4);
 		$data['log']=$this->adminmodel->get_log($id);
 		$this->load->view('backend/grafikpos',$data);
+	}
+
+	function grafikaxis()
+	{
+		$id = $this->uri->segment(4);
+		$data['log']=$this->adminmodel->get_curah($id);
+		$this->load->view('backend/grafikaxis',$data);
+	}
+
+	function grafikvw()
+	{
+		$id = $this->uri->segment(4);
+		$data['log']=$this->adminmodel->get_vw($id);
+		$data['jum']=$this->adminmodel->get_vw_jum($id);
+		$no = 0;
+			foreach ($data['jum']->result() as $jum){
+				$no = $no + 1; 
+				$data['log'.$no.'']=$this->adminmodel->get_vw($jum->id_vr);
+				echo $jum->id_vr;
+			}
+
+		$this->load->view('backend/grafikposvw',$data);
 	}
 	
 	function tabelposframe()

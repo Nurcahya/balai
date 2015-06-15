@@ -33,7 +33,7 @@
 		$pos[$no][1] = $rows['latitude'];
 		$pos[$no][2] = $rows['longitude'];
 		$pos[$no][3] = $rows['id_pos'];
-		if ($rows['TMA'] >= $rows['lwl'] && $rows['hwl'] < $rows['crest']) {
+		if ($rows['TMA'] >= $rows['lwl'] && $rows['TMA'] < $rows['crest']) {
 			$pos[$no][4] = 'normal';
 		}
 		else if ($rows['TMA'] >= $rows['hwl'] && $rows['TMA'] < $rows['crest']) {

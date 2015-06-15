@@ -29,7 +29,7 @@ $this->load->view('backend/tema/header');
       
                 <div class="row-fluid">
         <div class="span8">
-                    <h4 class="widgettitle">Grafik TMA</h4>
+                    <h4 class="widgettitle">Grafik Curah Hujan</h4>
                         <div class="widgetcontent">
                          
                          <IFRAME SRC="<?php echo base_url('admin/curahhujan/grafikpos');?>/<?php echo $this->session->userdata('id'); ?>" WIDTH=100% height=300 ></IFRAME> 

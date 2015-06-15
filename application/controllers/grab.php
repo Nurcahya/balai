@@ -159,23 +159,31 @@ class Grab extends CI_Controller {
 		$kl = $array['id_logger'];
 
 		//$file = fopen(base_url()."/assets/assets/upload/vr/".$VW,"r");
-		$file = fopen("http://127.0.0.1/balai/assets/upload/vr/".$VW,"r");
+		$file = fopen("http://127.0.0.1/balaiv3/assets/upload/vr/".$VW,"r");
 		$idvr = 0;
-			
 		$row = 1;
 		if (($handle = $file) !== FALSE) {
+		print_r(fgetcsv($file));
+
+
+
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			if($row == 1){ $row++; continue; }
+
+			if ($data[0]!="FIN"){
+
 		    $num = count($data);
 		           $row++;
 		    for ($c=0; $c < $num; $c++) {
-		    	echo $data[0];
+		    echo $data[0];
 		    echo $data[1];
+		    echo "---";
 		    $c++;
 
 		  $waktu = date("Y-m-d H:i:s");
 		  $this->usermodel->insert_vr($ks,$data[0], $data[1], $waktu);
 		    }
+		}
 		}
 		fclose($handle);
 
@@ -187,7 +195,7 @@ class Grab extends CI_Controller {
 		$this->usermodel->update_logger($kl,$ks,$time);
 		$this->usermodel->update_vw($ks,$VW,$time);
 		$this->usermodel->insert_vw($ks,$VW,$time);
-		redirect('admin/login');
+		//redirect('admin/login');
 		
 	}
 

@@ -7,7 +7,7 @@
     <meta name="author" content="Nurcahya Pradana Taufik Prakisya">
     <link rel="shortcut icon" href="<?php echo base_url();?>assets/frontend/images/favicon.png">
 
-    <title>MONITORING BALAI BENDUNGAN</title>
+    <title>MONITORING BENDUNGAN</title>
   <link href="<?php echo base_url();?>assets/frontend/js/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/fonts/font-awesome-4/css/font-awesome.min.css">
   <link href="<?php echo base_url();?>assets/frontend/css/style.css" rel="stylesheet" />
@@ -25,7 +25,7 @@
         <a class="navbar-brand" href="#"><span>Balai Bendungan Ditjen SDA</span></a>
       </div>
       <div class="navbar-collapse collapse">
-	  MONITORING KEAMANAN BALAI BENDUNGAN
+	  MONITORING KEAMANAN BENDUNGAN
        <!-- <ul class="nav navbar-nav">
           <li><a href="<?php echo site_url();?>">Beranda</a></li>
           <li><a href="<?php echo site_url();?>tabel">Tabel</a></li>

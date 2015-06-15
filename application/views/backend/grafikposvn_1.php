@@ -16,6 +16,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.stack.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.categories.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.time.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.axislabel.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.cookie.js"></script>
@@ -36,13 +37,13 @@
 											$n = 0;
 											foreach ($log1->result() as $log){ 
                                           
-												$arraylog[$n][0] = $log->log;
+												$arraylog[$n][0] = strtotime($log->log) * 1000;
 												$arraylog[$n][1] = $log->nilai;
 												$n = $n +1;
 
 												
 												 } ?>
-		                        	<div id="chartplace2" style="height:220px;"></div>                 
+		                        	<div id="chartplace2" style="height:260px; margin-left:45px !important; margin-right:25px !important;"></div>                 
                       
 
                     </div><!--span8-->
@@ -73,14 +74,23 @@ jQuery(document).ready(function(){
 				   series: {
 				   	   stack: false,
 					   lines: { show: true, fill: true },
-					   points: { show: true }
+					   points: { show: false }
 				   },
 				   legend: { position: 'nw'},
 				   grid: { hoverable: true, clickable: true, borderColor: '#ccc', borderWidth: 1, labelMargin: 10,   show: true,  aboveData: true },
-				   //yaxis: { min: 0, max: 15 },
+				     yaxis: 				    //yaxis:1
+				    {
+				        position: "left",
+				        axisLabel: "Seepage",
+        				axisLabelUseCanvas: true,
+				        axisLabelFontSizePixels: 12,
+				        show: true,
+				        axisLabelFontFamily: 'Verdana, Arial',
+				        min: 0        
+				    }, 
 				   xaxis: {
-				   mode: "categories",
-				   show:true
+				   mode: "time",
+				   show: false
 				   }				  
 				 });
 				 
@@ -99,7 +109,7 @@ jQuery(document).ready(function(){
 						
 					showTooltip(item.pageX, item.pageY,
 									//item.series.data[x]);
-									"Curah Hujan = "+y+" mm");
+									"Nilai Seepage = "+y+" mm");
 				}
 			
 			} else {

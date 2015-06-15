@@ -96,7 +96,7 @@
                 <?php } else if ($this->session->userdata('username_operator')=='batutegi'){ ?>
                 <li <?php if ($current == "vnotchhis"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/vnotchhis?id=5"><span class="icon-signal"></span> History Seepage</a></li>
                 <?php } else { ?>
-                <li <?php if ($current == "vnotchhis"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/vnotchhis?id=0"><span class="icon-signal"></span> History Seepage</a></li>
+                <li <?php if ($current == "vnotchhis"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/vnotchhis?id=1"><span class="icon-signal"></span> History Seepage</a></li>
                 <?php } ?>
                 <!-- history TAP -->
                 <?php if ($this->session->userdata('username_operator')=='jatiluhur'){ ?>
@@ -174,13 +174,13 @@
                 <li <?php if ($current == "ftvwp"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/ftpvw"><span class="icon-tasks"></span> Backup FTP Vibrating Wire</a></li>
                 <?php } ?>
                 <?php if ($this->session->userdata('hak_akses')==0){ ?>
+                <li <?php if ($current == "rumus"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/rumus"><span class="icon-tasks"></span> Olah Rumus</a></li>
+                <?php } ?>
+                <?php if ($this->session->userdata('hak_akses')==0){ ?>
                 <li <?php if ($current == "user"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/user"><span class="icon-user"></span> User</a></li>
                 <?php } ?>
                 <?php if ($this->session->userdata('hak_akses')==0){ ?>
                 <li <?php if ($current == "agen"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/agen"><span class="icon-envelope"></span> Agen</a></li>
-                 <?php } ?>
-                <?php if ($this->session->userdata('hak_akses')==0){ ?>
-               <!-- <li <?php if ($current =="konfig"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/konfig"><span class="icon-tasks"></span>Konfigurasi</a></li> -->
                  <?php } ?>
                 <?php if ($this->session->userdata('hak_akses')==0){ ?>
                 <li <?php if ($current =="runtext"){ ?>class="active" <?php } ?>><a href="<?php echo site_url();?>admin/runtext"><span class="icon-share"></span> Running Text</a></li>

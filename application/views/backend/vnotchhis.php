@@ -26,20 +26,18 @@ $this->load->view('backend/tema/header');
         <div class="maincontent">
         	<div class="contentinner">
                   <div class="row-fluid">
-                     <div class="span8" style="margin:10">
-			          <form action="<?php echo site_url();?>admin/vnotchhis/tangkapgridsearch/<?php echo $_GET['id']; ?>" method="post" id="moodleform" target="iframe">
-                            <table border="0" width="50%">
-                                <tr>
-                                <td><p>Tanggal Mulai: <input type="text" name="tglmulai" id="datepicker"></p></td>
-                                <td><p>Tanggal Berakhir: <input type="text" name="tglakhir" id="datepicker2"></p></td>
-                                <td><input type="submit" value="Filter"></td>
-                                <td><a href="<?php echo site_url();?>admin/vnotchhis/grid/<?php echo $_GET['id']; ?>" target="iframe"><input type="button" value="Reset Filter"></a></td>
-                            </table>
-                        </form>
-			
-			<IFRAME name="iframe" SRC=<?php echo base_url('admin/vnotchhis/grid?id='.$_GET['id']);?> WIDTH=100% Height=800></IFRAME>
-            </div>
-
+                  
+            <div class="span8">
+                       <h4 class="widgettitle">Grafik Seepage</h4>
+                        <div class="widgetcontent">
+                         
+                         <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/<?php echo $_GET['id']; ?>" WIDTH=100% height=300 style"position: relative; overflow-y: hidden;"></IFRAME> 
+                                              
+                        </div><!--widgetcontent-->
+                        
+                     <!--widgetcontent-->
+                      
+                    </div><!--span8-->
             <?php if ($this->session->userdata('hak_akses')==0){ ?>
                     <div class="span4">
                         <h4 class="widgettitle nomargin">Daftar Pos</h4>
@@ -65,7 +63,24 @@ $this->load->view('backend/tema/header');
                         </div><!--widgetcontent-->
                     </div><!--span4-->
                      <?php } ?>
+
+            <div class="span12" style="margin:10px">
+                  <h4 class="widgettitle">Detail </h4>
+                      <form action="<?php echo site_url();?>admin/vnotchhis/tangkapgridsearch/<?php echo $_GET['id']; ?>" method="post" id="moodleform" target="iframe">
+                            <table border="0" width="50%">
+                                <tr>
+                                <td><p>Tanggal Mulai: <input type="text" name="tglmulai" id="datepicker"></p></td>
+                                <td><p>Tanggal Berakhir: <input type="text" name="tglakhir" id="datepicker2"></p></td>
+                                <td><input type="submit" value="Filter"></td>
+                                <td><a href="<?php echo site_url();?>admin/vnotchhis/grid/<?php echo $_GET['id']; ?>" target="iframe"><input type="button" value="Reset Filter"></a></td>
+                            </table>
+                        </form>
+            
+            <IFRAME name="iframe" SRC=<?php echo base_url('admin/vnotchhis/grid?id='.$_GET['id']);?> WIDTH=100% Height=800></IFRAME>
             </div>
+
+            </div>
+              
         </div><!--contentinner-->
         </div><!--maincontent-->
         

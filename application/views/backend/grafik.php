@@ -22,31 +22,11 @@ $this->load->view('backend/tema/header');
                        <h4 class="widgettitle">Grafik TMA</h4>
                         <div class="widgetcontent">
 						 
-						 <IFRAME SRC="<?php echo base_url('admin/grafik/grafikpos');?>/<?php echo $this->uri->segment(4); ?>" WIDTH=100% height=300 ></IFRAME> 
+						 <IFRAME SRC="<?php echo base_url('admin/grafik/grafiktma');?>/<?php echo $this->uri->segment(4); ?>" WIDTH=100% height=300 style"position: relative; overflow-y: hidden;"></IFRAME> 
 		                        	          
                         </div><!--widgetcontent-->
                         
-                        <!--<div class="widgetcontent">
-
-                           
-                            <div id="tabs">
-                                <ul>
-                                    <li><a href="#tabs-1"><span class="icon-forward"></span> Riwayat</a></li>
-                                    <li><a href="#tabs-2"><span class="icon-eye-open"></span> Ekspor data</a></li>
-                                </ul>
-                                <div id="tabs-1">
-                                  
-                                       
-									     <IFRAME SRC="<?php echo base_url('admin/grafik/tabelposframe');?>/<?php echo $this->uri->segment(4); ?>" WIDTH=100% height=498 ></IFRAME> 
-									   
-                                </div>
-                              <div id="tabs-2">
-                                     <IFRAME SRC="<?php echo base_url('admin/grafik/tabelexport');?>/<?php echo $this->uri->segment(4); ?>" WIDTH=100% height=498 ></IFRAME> 
-                                       
-                                </div>
-                                
-                            </div>
-                        </div><!--widgetcontent-->
+                     <!--widgetcontent-->
                       
                     </div><!--span8-->
 

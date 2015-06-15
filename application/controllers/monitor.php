@@ -83,7 +83,57 @@ class Monitor extends CI_Controller {
 		$data['ch']=$this->usermodel->list_ch(5);
 		$this->load->view('frontend/monitor',$data);
 	}
+
+	public function BL()
+	{
+		$data['nama']="Bili-bili";
+		$data['tma']=$this->usermodel->list_tma(6);
+		$data['citra']=$this->usermodel->citra_pos(6);
+		$data['logger']=$this->usermodel->list_logger(6);
+		$data['vnotch']=$this->usermodel->list_vnotch(6);
+		$data['cj']=$this->usermodel->list_cj(6);
+		$data['ch']=$this->usermodel->list_ch(6);
+		$this->load->view('frontend/monitor',$data);
+	}
+
+	public function SL()
+	{
+		$data['nama']="Batutegi";
+		$data['tma']=$this->usermodel->list_tma(7);
+		$data['citra']=$this->usermodel->citra_pos(7);
+		$data['logger']=$this->usermodel->list_logger(7);
+		$data['vnotch']=$this->usermodel->list_vnotch(7);
+		$data['cj']=$this->usermodel->list_cj(7);
+		$data['ch']=$this->usermodel->list_ch(7);
+		$this->load->view('frontend/monitor',$data);
+	}
+
+	public function WO()
+	{
+		$data['nama']="Batutegi";
+		$data['tma']=$this->usermodel->list_tma(8);
+		$data['citra']=$this->usermodel->citra_pos(8);
+		$data['logger']=$this->usermodel->list_logger(8);
+		$data['vnotch']=$this->usermodel->list_vnotch(8);
+		$data['cj']=$this->usermodel->list_cj(8);
+		$data['ch']=$this->usermodel->list_ch(8);
+		$this->load->view('frontend/monitor',$data);
+	}
+
+	public function SG()
+	{
+		$data['nama']="Batutegi";
+		$data['tma']=$this->usermodel->list_tma(9);
+		$data['citra']=$this->usermodel->citra_pos(9);
+		$data['logger']=$this->usermodel->list_logger(9);
+		$data['vnotch']=$this->usermodel->list_vnotch(9);
+		$data['cj']=$this->usermodel->list_cj(9);
+		$data['ch']=$this->usermodel->list_ch(9);
+		$this->load->view('frontend/monitor',$data);
+	}
 	
+/*-------------------------------------------------------------------*/
+
 	public function VR1(){
 		$data['list']=$this->usermodel->list_vw(1);
 		$this->load->view('frontend/vr',$data);
@@ -104,10 +154,29 @@ class Monitor extends CI_Controller {
 		$data['list']=$this->usermodel->list_vw(5);
 		$this->load->view('frontend/vr',$data);
 	}
-	public function vrscroll(){
-		$data['id'] = $this->uri->segment(3);
-		$this->load->view('frontend/vrscroll',$data);
+	public function VR6(){
+		$data['list']=$this->usermodel->list_vw(6);
+		$this->load->view('frontend/vr',$data);
 	}
+	public function VR7(){
+		$data['list']=$this->usermodel->list_vw(7);
+		$this->load->view('frontend/vr',$data);
+	}
+	public function VR8(){
+		$data['list']=$this->usermodel->list_vw(8);
+		$this->load->view('frontend/vr',$data);
+	}
+	public function VR9(){
+		$data['list']=$this->usermodel->list_vw(9);
+		$this->load->view('frontend/vr',$data);
+	}
+	public function scrollCCTV(){
+		$data['id'] = $this->uri->segment(3);
+		$data['citra']=$this->usermodel->citra_pos(2);
+		$this->load->view('frontend/scrollCCTV',$data);
+	}
+
+/*-------------------------------------------------------------------*/
 
 	public function ACC1(){
 		$data['list']=$this->usermodel->list_acc(1);
@@ -127,6 +196,22 @@ class Monitor extends CI_Controller {
 	}
 	public function ACC5(){
 		$data['list']=$this->usermodel->list_acc(5);
+		$this->load->view('frontend/acc',$data);
+	}
+	public function ACC6(){
+		$data['list']=$this->usermodel->list_acc(6);
+		$this->load->view('frontend/acc',$data);
+	}
+	public function ACC7(){
+		$data['list']=$this->usermodel->list_acc(7);
+		$this->load->view('frontend/acc',$data);
+	}
+	public function ACC8(){
+		$data['list']=$this->usermodel->list_acc(8);
+		$this->load->view('frontend/acc',$data);
+	}
+	public function ACC9(){
+		$data['list']=$this->usermodel->list_acc(9);
 		$this->load->view('frontend/acc',$data);
 	}
 }

@@ -13,14 +13,14 @@
 <!-- CSS -->
 <style type="text/css">
 #flotcontainer {
-width: 230px;
+width: 220px;
 height: 196px;
 text-align: center;
 margin: -10px 0px 0px 58px;
 float: left;
 }
 #flotcontainer2 {
-width: 230px;
+width: 220px;
 height: 30px;
 text-align: center;
 margin: 5px 0px 0px 58px;

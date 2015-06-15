@@ -20,6 +20,11 @@ class Usermodel extends CI_Model {
 		return $this->db->get('vnotch')->row_array();
     }
 
+    function get_vw(){
+		$query = $this->db->query("SELECT *	FROM view_vw ORDER BY id_pos ASC");
+        return $query;
+	}
+
     function get_accel($id){
         $this->db->where('id_sensor',$id);
 		return $this->db->get('accelerometer')->row_array();
@@ -239,8 +244,8 @@ class Usermodel extends CI_Model {
         return $query;
 	}
 
-	function list_acc(){
-		$query = $this->db->query("SELECT *	FROM (SELECT * FROM history_acc ORDER BY log DESC) as acc GROUP BY id_pos");
+	function list_acc($id){
+		$query = $this->db->query("SELECT *	FROM (SELECT * FROM history_acc where id_pos = '$id' ORDER BY log DESC) as acc GROUP BY id_pos ");
         return $query;
 	}
 
@@ -260,8 +265,11 @@ class Usermodel extends CI_Model {
 	}
 
 	function list_cj($id){
-		$query = $this->db->query("SELECT SUM(nilai) as rata1
-		FROM (select * from history_curah_hujan WHERE id_pos= ".$id." order by log desc limit 6) as cj
+
+		$waktu = date("Y-m-d H:i:s");
+		$interval = date('Y-m-d H:i:s', strtotime($waktu . ' - 1 hour'));
+		$query = $this->db->query("SELECT COALESCE(SUM(nilai),0) as rata1
+		FROM (select * from history_curah_hujan WHERE id_pos= ".$id." and log > '".$interval."' order by log desc) as cj
 		");
         return $query;
 	}

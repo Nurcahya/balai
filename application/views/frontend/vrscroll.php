@@ -108,7 +108,7 @@
             function ScaleSlider() {
                 var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
                 if (parentWidth)
-                    jssor_slider1.$SetScaleWidth(Math.min(parentWidth, 600));
+                    jssor_slider1.$SetScaleWidth(Math.min(parentWidth, 900));
                 else
                     $JssorUtils$.$Delay(ScaleSlider, 30);
             }
@@ -130,7 +130,7 @@
     <!-- Jssor Slider Begin -->
     <!-- You can move inline styles to css file or css block. -->
     <center>
-    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden; ">
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 900px; height: 300px; overflow: hidden; ">
 
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -143,7 +143,7 @@
         </div>
 
         <!-- Slides Container -->
-        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 300px; overflow: hidden;">
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 900px; height: 300px; overflow: hidden;">
             <div>
                 <IFRAME id="vrframe" SRC=<?php echo site_url('monitor/vr'.$id);?> width="100%" Height=190 frameborder=0></IFRAME>      
             </div>

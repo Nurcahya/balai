@@ -25,6 +25,7 @@ class Vnotchhis extends CI_Controller {
 		else {
 		$data['runtext']=$this->adminmodel->running_text();
 		$data['current']="vnotchhis";
+
 		$data['list_pos']=$this->adminmodel->list_posvn();
 		$sesiid = array(
 						'id' 	=> $_GET['id']
@@ -96,6 +97,30 @@ function grafikpos()
 				$data['log'.$no.'']=$this->adminmodel->get_vnotch($id, $jum->id_vnotch);
 			}
 		if($no=='1'){
+			$this->load->view('backend/grafikhighvn_1',$data);
+		}
+		else if($no=='2'){
+			$this->load->view('backend/grafikhighvn_2',$data);
+		}
+		else if($no=='3'){
+			$this->load->view('backend/grafikhighvn_3',$data);
+		}
+		else{
+			echo "<h3>belum ada data Vnotch yang masuk.</h3>";
+		}
+	}
+
+
+	function grafikfront()
+	{
+		$id = $this->uri->segment(4);
+		$data['jum']=$this->adminmodel->get_vnotch_jum($id);
+		$no = 0;
+			foreach ($data['jum']->result() as $jum){
+				$no = $no + 1; 
+				$data['log'.$no.'']=$this->adminmodel->get_vnotch_front($id, $jum->id_vnotch);
+			}
+		if($no=='1'){
 			$this->load->view('backend/grafikposvn_1',$data);
 		}
 		else if($no=='2'){
@@ -108,6 +133,7 @@ function grafikpos()
 			echo "<h3>belum ada data Vnotch yang masuk.</h3>";
 		}
 	}
+
 }
 
 

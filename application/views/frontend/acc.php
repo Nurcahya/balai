@@ -50,15 +50,15 @@ foreach($list->result() as $list) {
 		    $c++;
 	
 		  		$arraylog[$n][0] =  $data[0].":".$n;
-				$arraylog[$n][1] =  $data[1];
+				$arraylog[$n][1] =  $data[1]+50;
 
 
 				$arraylog2[$n][0] = $data[0].":".$n;
-				$arraylog2[$n][1] = $data[2];
+				$arraylog2[$n][1] = $data[2]+50;
 
 
 				$arraylog3[$n][0] = $data[0].":".$n;
-				$arraylog3[$n][1] = $data[3];
+				$arraylog3[$n][1] = $data[3]+50;
 				$n = $n +1;
 											
 		    }
@@ -99,7 +99,7 @@ jQuery(document).ready(function(){
 	
 			
 		var plot = jQuery.plot(jQuery("#chartplace2"),
-			   [ { data: log, label: "X", color: "#0000FF"}, { data: log2, label: "Y", color: "#FF0000"}, { data: log3, label: "Z", color: "#00FF00"}   ], {
+			   [ { data: log, label: "vw1", color: "#0000FF"}, { data: log2, label: "vw2", color: "#FF0000"}, { data: log3, label: "vw3", color: "#00FF00"}, { data: log3, label: "vw4", color: "#ff00ff"} , { data: log3, label: "vw5", color: "#00FFff"}    ], {
 				   series: {
 				   	   stack: false,
 					   lines: { show: true, fill: true },
@@ -107,7 +107,7 @@ jQuery(document).ready(function(){
 				   },
 				   legend: { position: 'nw'},
 				   grid: { hoverable: true, clickable: true, borderColor: '#ccc', borderWidth: 1, labelMargin: 10,   show: true,  aboveData: true },
-				   //yaxis: { min: 0, max: 15 },
+				   yaxis: { min: 49, max: 51 },
 				   xaxis: {
 				   mode: "categories",
 				   show:true
