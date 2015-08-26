@@ -8,7 +8,7 @@ $this->load->view('frontend/tema/headermon');
 			<div class="row dash-cols">
 				<div class="row dash-cols">
 				<div class="col-sm-6 col-md-6 col-lg-4" style="width: 55% !important;">
-					<div class="block">
+					<div class="block" style="background: #000 !important;">
 						<div class="header no-border">
 							<h2>Grafik Keamanan Bendungan</h2>
 
@@ -35,8 +35,8 @@ $this->load->view('frontend/tema/headermon');
 							<?php } ?>  
 					</div>
 			
-					<div class="block">
-							  <IFRAME SRC="<?php echo base_url('admin/grafik/grafikaxis');?>/3" WIDTH=100% height=40 style="border:0 !important; background-color:000000 !important;"></IFRAME> 
+					<div class="block" style="background: #000 !important;">
+							  <IFRAME SRC="<?php echo base_url('admin/grafik/grafikaxis');?>/3" WIDTH=100% height=40 style="border:0 !important; background-color:000000 !important; padding-left:115px !important; padding-right:60px !important;"></IFRAME> 
 					</div>
 				</div>	
 				
@@ -46,8 +46,25 @@ $this->load->view('frontend/tema/headermon');
 							<h2>Screenshot CCTV</h2>
 						</div>
 							<div class="content">
-							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>" WIDTH=762px height=460px></IFRAME>
-
+							<?php if ($nama=="Jatiluhur") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/1" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Sempor") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/2" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Kedung Ombo") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/3" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Sermo") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/4" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Batutegi") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/5" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Bili-bili") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/6" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Selorejo") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/7" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Wonogiri") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/8" WIDTH=762px height=460px></IFRAME>
+							<?php } else if ($nama=="Situ Gintung") { ?>
+							<IFRAME SRC="<?php echo base_url('monitor/scrollCCTV');?>/9" WIDTH=762px height=460px></IFRAME>	
+							<?php } ?>  
 						</div>
 					</div>
 				</div>	
@@ -56,32 +73,32 @@ $this->load->view('frontend/tema/headermon');
 			<div class="row dash-cols">	
 				<div class="col-sm-6 col-md-4" style="width: 55% !important;">
 
-					<div class="block">
+					<div class="block" style="background: #000 !important;">
 						<div class="header no-border">
 							<h2>Grafik Seepage</h2>
 						</div>
 							<?php if ($nama=="Jatiluhur") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/1" WIDTH=100% height=260></IFRAME>  
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/1" WIDTH=100% height=260 style="border:0 !important;"></IFRAME>  
 							<?php } else if ($nama=="Sempor") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/2" WIDTH=100% height=260></IFRAME>  	
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/2" WIDTH=100% height=260 style="border:0 !important;"></IFRAME>  	
 							<?php } else if ($nama=="Kedung Ombo") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/3" WIDTH=100% height=260></IFRAME>  		
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/3" WIDTH=100% height=260 style="border:0 !important;"></IFRAME>  		
 							<?php } else if ($nama=="Sermo") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/4" WIDTH=100% height=260></IFRAME>  	
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/4" WIDTH=100% height=260 style="border:0 !important;"></IFRAME>  	
 							<?php } else if ($nama=="Batutegi") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/5" WIDTH=100% height=260></IFRAME>   	
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikfront');?>/5" WIDTH=100% height=260 style="border:0 !important;"></IFRAME>   	
 							<?php } else if ($nama=="Bili-bili") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/6" WIDTH=100% height=300></IFRAME>   	
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/6" WIDTH=100% height=300 style="border:0 !important;"></IFRAME>   	
 							<?php } else if ($nama=="Selorejo") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/7" WIDTH=100% height=300></IFRAME>   	
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/7" WIDTH=100% height=300 style="border:0 !important;"></IFRAME>   	
 							<?php } else if ($nama=="Wonogiri") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/8" WIDTH=100% height=300></IFRAME>   	
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/8" WIDTH=100% height=300 style="border:0 !important;"></IFRAME>   	
 							<?php } else if ($nama=="Situ Gintung") { ?>
-							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/9" WIDTH=100% height=300></IFRAME>  	
+							  <IFRAME SRC="<?php echo base_url('admin/vnotchhis/grafikpos');?>/9" WIDTH=100% height=300 style="border:0 !important;"></IFRAME>  	
 							<?php } ?> 	
 					</div>
 
-					<div class="block">
+					<div class="block" style="background: #000 !important;">
 							  <IFRAME SRC="<?php echo base_url('admin/grafik/grafikaxis');?>/3" WIDTH=100% height=40 style="border:0 !important; background-color:000000 !important;"></IFRAME> 
 					</div>
 				</div>	

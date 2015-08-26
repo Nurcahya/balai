@@ -1,38 +1,10 @@
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Katniss Premium Admin Template</title>
-<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.default.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/prettify/prettify.css" type="text/css" />
-<script type="text/javascript" src="<?php echo base_url();?>assets/prettify/prettify.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-migrate-1.1.1.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-ui-1.9.2.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.resize.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.axislabel.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.categories.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.flot.time.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/chart.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/custom.js"></script>
-<script type="text/javascript" src="date.js"></script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
-</head>
-
-<body style="overflow-x:hidden;overflow-y:hidden;">
-	
     <!-- START OF RIGHT PANEL -->
-                	<div style="background:black;">
+                 	<div style="background:black;">
                     
 						
                                             <?php 
-											$arraylog = array();
+                                           	$arraylog = array();
 											$n = 0;
 											foreach ($log->result() as $log){ 
                                           
@@ -96,8 +68,8 @@
 												$arraylog5vw[$n][1] = $log5->tap;
 												$n = $n +1;
 												 } ?>
-
-		                        	<div id="chartplace2" style="height:410px;"></div>                 
+									<div id="legendContainer"></div>    
+		                        	<div id="<?php echo $kode; ?>" style="height:410px;"></div>                 
                       
 
                     </div><!--span8-->
@@ -117,8 +89,7 @@ var vwlog5 = <?php echo json_encode($arraylog5vw); ?>;
 document.write(vwlog);
 
 jQuery(document).ready(function(){	
-			
-		
+					
 		function showTooltip(x, y, contents) {
 			jQuery('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css( {
 				position: 'absolute',
@@ -131,7 +102,7 @@ jQuery(document).ready(function(){
 		}
 	
 			
-		var plot = jQuery.plot(jQuery("#chartplace2"),
+		var plot = jQuery.plot(jQuery("<?php echo '#'.$kode; ?>"),
 			   [ { data: log, label: "Tinggi Muka Air", color: "#0000ff", lines: { show: true }, yaxis: 1},
 			   	 { data: log2, label: "Curah Hujan", color: "#ff0000", bars: { show: true }, yaxis: 2 }, 
 			   	 { data: vwlog, label: "VW1", color: "#00ff00", lines: { show: true }, yaxis: 3 }, 
@@ -143,7 +114,10 @@ jQuery(document).ready(function(){
 
 
 			   	 { 
-				   legend: { position: 'nw'},
+				    legend:{         
+			            container:"#legendContainer",            
+			            noColumns: 0
+			        },
 				   grid: { hoverable: true, clickable: true, borderColor: '#ccc', borderWidth: 1, labelMargin: 10,   show: true,  aboveData: true },
 				   //yaxis: { min: 0, max: 15 },
 				      yaxes: [
@@ -191,7 +165,7 @@ jQuery(document).ready(function(){
 				 });
 				 
 		var previousPoint = null;
-		jQuery("#chartplace2").bind("plothover", function pos (event, pos, item) {
+		jQuery("<?php echo '#'.$kode; ?>").bind("plothover", function pos (event, pos, item) {
 			jQuery("#x").text(pos.x.toFixed(2));
 			jQuery("#y").text(pos.y.toFixed(2));
 			
@@ -214,9 +188,10 @@ jQuery(document).ready(function(){
 			}
 		});
 		
+
+		
+
 });
 </script>
 
 
-</body>
-</html>

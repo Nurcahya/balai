@@ -63,7 +63,7 @@
             var options = {
                 $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
                 $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
-                $AutoPlayInterval: 5000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                $AutoPlayInterval: 3000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
                 $PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, default value is 1
 
                 $ArrowKeyNavigation: true,                          //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
@@ -145,31 +145,10 @@
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 763px; height: 500px; overflow: hidden;">
             <div>
-               <?php foreach ($citra->result() as $citra) { ?>
-                <img src="http://36.78.163.102/balai/assets/upload/citra/<?php echo $citra->nama_citra;?>" width="100%" style="max-height:500px !important;">
-                 <?php }  ?>
+               <IFRAME SRC="<?php echo base_url('admin/grafik/grafikpos/3');?>" WIDTH=762px height=460px></IFRAME>
             </div>
             <div>
-                <?php if ($id == 1) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 2) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 3) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 4) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 5) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 6) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 7) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 8) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 9) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } ?>
-
+                <IFRAME SRC="<?php echo base_url('admin/grafik/grafikpos/2');?>" Padding-top:45px; WIDTH=762px height=460px></IFRAME>
             </div>
             
        

@@ -39,8 +39,8 @@ class Web extends CI_Controller {
 
 	public function start()
 	{
-		$send=$this->webmodel->send();
-		$send2=$this->webmodel->send2();
+		$send = $this->webmodel->send();
+		$send2 = $this->webmodel->send2();
 
 		$url = array();
 		$url2 = array();

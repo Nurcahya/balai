@@ -130,21 +130,33 @@ function gridsearch()
 		$data['log']=$this->adminmodel->get_log_front($id);
 		$data['curah']=$this->adminmodel->get_curah_front($id);
 		$data['jum']=$this->adminmodel->get_vw_jum($id);
-		$this->load->view('backend/test/head');
-		for ($i = 1; $i<= 50; $i = $i+5){
+		$this->load->view('backend/test/head_2');
+		//for ($i = 1; $i<= 50; $i = $i+5){
 
-		$no = 0;
-			foreach ($data['jum']->result() as $jum){
-				$no = $no + 1; 
-				$data['vw'.$no.'']=$this->adminmodel->get_vw($id,$jum->id_vr);
-			}
-		$data['kode']="chartplace".$i;
-		$this->load->view('backend/test/body',$data);
 		
-	}
-	
-	
-	$this->load->view('backend/test/foot');
+		foreach ($data['jum']->result() as $jum){
+			$chunk[] = $jum->id_vr;
+		}
+		//$data['kode']="chartplace".$i;
+		//$this->load->view('backend/test/body',$data);
+		$a = array_chunk($chunk, 5);
+		$no = 0; $chart = 0;
+		foreach ($a as $v1) {
+		    foreach ($v1 as $v2) {
+		        $no = $no + 1; 
+		        $chart = $chart + 1; 
+		        $data['vw'.$no.''] = [];
+				$data['vw'.$no.'']=$this->adminmodel->get_vw($id,$v2);	
+	//echo $no.' = '.$v2.'<br>';			
+		    }
+	$no = 0;
+	$data['kode']="chartplace".$chart;
+	$this->load->view('backend/test/body_2',$data);
+		}
+
+	//}
+	//$this->load->view('backend/test/body_2',$data);
+	$this->load->view('backend/test/foot_2');
 	}
 
 	function grafiktma()

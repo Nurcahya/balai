@@ -97,7 +97,7 @@ class Monitor extends CI_Controller {
 
 	public function SL()
 	{
-		$data['nama']="Batutegi";
+		$data['nama']="Selorejo";
 		$data['tma']=$this->usermodel->list_tma(7);
 		$data['citra']=$this->usermodel->citra_pos(7);
 		$data['logger']=$this->usermodel->list_logger(7);
@@ -109,7 +109,7 @@ class Monitor extends CI_Controller {
 
 	public function WO()
 	{
-		$data['nama']="Batutegi";
+		$data['nama']="Wonogiri";
 		$data['tma']=$this->usermodel->list_tma(8);
 		$data['citra']=$this->usermodel->citra_pos(8);
 		$data['logger']=$this->usermodel->list_logger(8);
@@ -121,7 +121,7 @@ class Monitor extends CI_Controller {
 
 	public function SG()
 	{
-		$data['nama']="Batutegi";
+		$data['nama']="Situ Gintung";
 		$data['tma']=$this->usermodel->list_tma(9);
 		$data['citra']=$this->usermodel->citra_pos(9);
 		$data['logger']=$this->usermodel->list_logger(9);
@@ -171,8 +171,19 @@ class Monitor extends CI_Controller {
 	}
 	public function scrollCCTV(){
 		$data['id'] = $this->uri->segment(3);
-		$data['citra']=$this->usermodel->citra_pos(2);
+		$data['citra']=$this->usermodel->citra_pos($this->uri->segment(3));
 		$this->load->view('frontend/scrollCCTV',$data);
+	}
+
+	public function scrollGrafik(){
+		$data['id'] = $this->uri->segment(3);
+		$data['citra']=$this->usermodel->citra_pos(2);
+		$this->load->view('frontend/scrollGrafik',$data);
+	}
+
+	public function scrollPenampang(){
+		$data['id'] = $this->uri->segment(3);
+		$this->load->view('frontend/scrollpenampang',$data);
 	}
 
 /*-------------------------------------------------------------------*/

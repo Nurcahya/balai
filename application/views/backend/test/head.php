@@ -24,7 +24,17 @@
 <script type="text/javascript" src="date.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
 </head>
-
+<style>
+#legendContainer {
+    background-color: #fff;
+    padding: 2px;
+    margin-bottom: 8px;
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid #E6E6E6;
+    display: inline-block;
+    margin: 0 auto;
+}
+</style>
 <body style="overflow-x:hidden;overflow-y:hidden;">
 	
     <!-- START OF RIGHT PANEL -->

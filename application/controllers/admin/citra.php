@@ -56,6 +56,8 @@ class Citra extends CI_Controller {
     	$crud->order_by('log','desc');
 		$crud->unset_add();
 		$crud->unset_edit();
+		$crud->unset_print();
+		$crud->unset_export();
 		//$crud->set_field_upload('file_pendukung','assets/uploads/file_pendukung');
 		$crud->callback_column('nama_citra', array($this, '_transformIMG'));
 		$crud->set_subject('citra');
@@ -94,10 +96,36 @@ function gridsearch()
     	$crud->order_by('log','desc');
 		$crud->unset_add();
 		$crud->unset_edit();
+		$crud->unset_print();
+		$crud->unset_export();
 		//$crud->set_field_upload('file_pendukung','assets/uploads/file_pendukung');
+		$crud->callback_column('nama_citra', array($this, '_transformIMG'));
 		$crud->set_subject('citra CCTV');
 		$output = $crud->render();
 		$this->load->view('backend/grid',$output);
 	}
+
+	function history()
+	{
+		if($this->session->userdata('username_operator') == '' ){ 
+		redirect('admin/login');
+		}
+		else {
+		$data['tanggal']=$_POST['tglhis'];
+		if ($_POST['pos'] == 0){	$data['bendungan']="Semua Lokasi"; }
+		else if ($_POST['pos'] == 1){ $data['bendungan']="Jatiluhur"; }
+		else if ($_POST['pos'] == 2){ $data['bendungan']="Sempor"; }
+		else if ($_POST['pos'] == 3){ $data['bendungan']="Kedung Ombo"; }
+		else if ($_POST['pos'] == 4){ $data['bendungan']="Sermo"; }
+		else if ($_POST['pos'] == 5){ $data['bendungan']="Batutegi"; }
+		else if ($_POST['pos'] == 6){ $data['bendungan']="Bili-Bili"; }
+		else if ($_POST['pos'] == 7){ $data['bendungan']="Selorejo"; }
+		else if ($_POST['pos'] == 8){ $data['bendungan']="Wonogiri"; }
+		else if ($_POST['pos'] == 9){ $data['bendungan']="Situ Gintung"; }
+		$data['citra']=$this->adminmodel->get_his_citra($_POST['pos'],$_POST['tglhis']);
+		$this->load->view('backend/citracetak',$data);
+	}
+	}
 		
 }
+

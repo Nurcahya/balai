@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sensor extends CI_Controller {
+class Vw extends CI_Controller {
 
 	function __construct()
 	{
@@ -32,8 +32,8 @@ class Sensor extends CI_Controller {
 		}
 		else {
 		$data['runtext']=$this->adminmodel->running_text();
-		$data['current']="sensor";
-		$this->load->view('backend/sensor',$data);
+		$data['current']="agen";
+		$this->load->view('backend/pilihvw',$data);
 	}
 	}
 	
@@ -45,18 +45,24 @@ class Sensor extends CI_Controller {
 		else {
 			
 		$crud = new grocery_CRUD();
-		$crud->set_table('sensor');
-		$crud->columns('id_sensor','id_logger','id_pos','tipe_sensor');
-		$crud->set_relation('id_pos','pos','nama_pos');
-		$crud->set_relation('id_logger','logger','nama_logger');
-		$crud->display_as('id_logger','Nama Logger');
-		$crud->display_as('id_pos','Nama Pos Bendungan');
+
+		$activities = $this->adminmodel->get_vw_list();
+		$n = 0;
+		foreach ($activities->result() as $row)
+		{
+			$myarray[$n] = $row->id_vr;
+			$n++;
+		}
+
+
+		$crud->set_table('agen');
 		//$crud->set_field_upload('file_pendukung','assets/uploads/file_pendukung');
-		$crud->set_subject('sensor');
+		$crud->set_relation('id_pos','pos','nama_pos');
+		$crud->set_subject('agen');
+		$crud->field_type('nama_agen','set',$myarray);
 		$output = $crud->render();
 		$this->load->view('backend/grid',$output);
 	}
 	}
-	
 	
 }

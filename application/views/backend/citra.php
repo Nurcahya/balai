@@ -26,14 +26,35 @@ $this->load->view('backend/tema/header');
         <div class="maincontent">
         	<div class="contentinner">
 			<form action="<?php echo site_url();?>admin/citra/tangkapgridsearch/<?php echo $_GET['id']; ?>" method="post" id="moodleform" target="iframe">
-                            <table border="0" width="50%">
-                                <tr>
-                                <td><p>Tanggal Mulai: <input type="text" name="tglmulai" id="datepicker"></p></td>
-                                <td><p>Tanggal Berakhir: <input type="text" name="tglakhir" id="datepicker2"></p></td>
-                                <td><input type="submit" value="Filter"></td>
-                                <td><a href="<?php echo site_url();?>admin/citra/grid/<?php echo $_GET['id']; ?>" target="iframe"><input type="button" value="Reset Filter"></a></td>
-                            </table>
-                        </form>
+                <table border="0" width="50%">
+                    <tr>
+                    <td><p>Tanggal Mulai: <input type="text" name="tglmulai" id="datepicker"></p></td>
+                    <td><p>Tanggal Berakhir: <input type="text" name="tglakhir" id="datepicker2"></p></td>
+                    <td><input type="submit" value="Filter"></td>
+                    <td><a href="<?php echo site_url();?>admin/citra/grid/<?php echo $_GET['id']; ?>" target="iframe"><input type="button" value="Reset Filter"></a></td>
+                </table>
+            </form>
+
+            <form action="<?php echo site_url();?>admin/citra/history/<?php echo $_GET['id']; ?>" method="post" target="_blank">
+                <table border="0" width="50%">
+                    <tr>
+                    <td><p>Lokasi: 
+                    <select name="pos">
+                        <option value="0">Semua Lokasi</option>
+                        <option value="1">Bendungan Jati Luhur</option>
+                        <option value="2">Bendungan Sempor</option>
+                        <option value="3">Bendungan Kedung Ombo</option>
+                        <option value="4">Bendungan Sermo</option>
+                        <option value="5">Bendungan Batu Tegi</option>
+                        <option value="6">Bendungan Bili Buku</option>
+                        <option value="7">Bendungan Selorejo</option>
+                        <option value="8">Bendungan Wonogiri</option>
+                        <option value="9">Bendungan Situ Gintung</option>
+                    </select></p></td>
+                    <td><p>Tanggal: <input type="text" name="tglhis" id="datepicker3"></p></td>
+                    <td><input type="submit" value="Cetak"></td>
+                </table>
+            </form>
 			
 			<IFRAME name="iframe" SRC=<?php echo base_url('admin/citra/grid?id='.$_GET['id']);?> WIDTH=100% Height=800></IFRAME>
             </div><!--contentinner-->

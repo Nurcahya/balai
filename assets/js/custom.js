@@ -242,7 +242,9 @@ jQuery(document).ready(function(){
 	if(jQuery('#datepicker2').length > 0)
 		jQuery( "#datepicker2" ).datepicker();
 		
-		
+	if(jQuery('#datepicker3').length > 0)
+		jQuery( "#datepicker3" ).datepicker();
+			
 	
 	// growl notification
 	if(jQuery('#growl').length > 0) {

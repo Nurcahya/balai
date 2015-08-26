@@ -144,34 +144,68 @@
 
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 763px; height: 500px; overflow: hidden;">
+             <?php if ($id == 1) { ?>           
             <div>
-               <?php foreach ($citra->result() as $citra) { ?>
-                <img src="http://36.78.163.102/balai/assets/upload/citra/<?php echo $citra->nama_citra;?>" width="100%" style="max-height:500px !important;">
-                 <?php }  ?>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Batutegi-Potongan.jpg" width="100%" style="max-height:500px !important;">  
+            </div>
+            <?php } else if  ($id == 2) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Sempor-Potongan-M3.jpg" width="100%" style="max-height:500px !important;">  
+            </div>     
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Sempor-Potongan-M5.jpg" width="100%" style="max-height:500px !important;">  
+            </div> 
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Sempor-Potongan-M8.jpg" width="100%" style="max-height:500px !important;">  
+            </div>        
+            <?php } else if  ($id == 3) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Batutegi-Potongan.jpg" width="100%" style="max-height:500px !important;">  
+            </div>                 
+            <?php } else if  ($id == 4) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Sermo-Potongan-12.jpg" width="100%" style="max-height:500px !important;">  
             </div>
             <div>
-                <?php if ($id == 1) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 2) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 3) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 4) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 5) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 6) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 7) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 8) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } else if  ($id == 9) { ?>
-                 <img src="<?php echo base_url();?>assets/frontend/images/penampang.jpg" width="100%" style="max-height:500px !important;">  
-                <?php } ?>
-
-            </div>
-            
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Sermo-Potongan-15.jpg" width="100%" style="max-height:500px !important;">  
+            </div>  
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Sermo-Potongan-18.jpg" width="100%" style="max-height:500px !important;">  
+            </div>                   
+            <?php } else if  ($id == 5) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Batutegi-Potongan.jpg" width="100%" style="max-height:500px !important;">  
+            </div>            
+            <?php } else if  ($id == 6) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Batutegi-Potongan.jpg" width="100%" style="max-height:500px !important;">  
+            </div>            
+            <?php } else if  ($id == 7) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Selorejo-Pot-A.jpg" width="100%" style="max-height:500px !important;">  
+            </div>            
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Selorejo-Pot-B.jpg" width="100%" style="max-height:500px !important;">  
+            </div>         
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Selorejo-Pot-C.jpg" width="100%" style="max-height:500px !important;">  
+            </div>         
+            <?php } else if  ($id == 8) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Wonogiri-Potongan-Sta11.jpg" width="100%" style="max-height:500px !important;">  
+            </div>           
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Wonogiri-Potongan-Sta14.jpg" width="100%" style="max-height:500px !important;">  
+            </div>    
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Wonogiri-Potongan-Sta16.jpg" width="100%" style="max-height:500px !important;">  
+            </div>     
+            <?php } else if  ($id == 9) { ?>
+            <div>
+             <img src="<?php echo base_url();?>assets/frontend/images/penampang/Batutegi-Potongan.jpg" width="100%" style="max-height:500px !important;">  
+            </div>            
+            <?php } ?>            
+                       
        
         </div>
         <!-- Bullet Navigator Skin Begin -->

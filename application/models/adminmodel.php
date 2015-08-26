@@ -23,22 +23,6 @@ class Adminmodel extends CI_Model {
         $this->db->where('username_operator',$uname);
 		return $this->db->get('operator')->row_array();
     }
-	
-	function findByEmail($email) {
-        $this->db->select('*');
-        $this->db->where('email', $email);
-        $query = $this->db->get('member', 1);
-
-        if ($query->num_rows() == 1) {
-            return $query->row_array();
-        }
-    }
-    
-	
-	function get_member_by_id($id) {
-        $this->db->where('id_member',$id);
-		return $this->db->get('member')->row_array();
-    }
 
 	function get_log($id) {
         //$this->db->where('id_pos',$id);
@@ -74,6 +58,13 @@ class Adminmodel extends CI_Model {
 		return $query;
     }
 
+      function get_vw_list() {
+        //$this->db->where('id_pos',$id);
+		$query = $this->db->query("select * from (select * from history_vr group by id_vr order by log desc) a order by a.log asc");
+       // $this->db->limit(10);
+		return $query;
+    }
+
     function get_vnotch($id, $id_vnotch) {
         //$this->db->where('id_pos',$id);
 		$query = $this->db->query("select * from (select * from history_vnotch where id_pos = '".$id."' and id_vnotch = '".$id_vnotch."' order by log desc) a order by a.log asc");
@@ -85,7 +76,7 @@ class Adminmodel extends CI_Model {
         //$this->db->where('id_pos',$id);
 		$waktu = date("Y-m-d H:i:s");
 		$interval = date('Y-m-d H:i:s', strtotime($waktu . ' - 1 day'));
-		$query = $this->db->query("select * from (select * from history_vnotch where id_pos = '".$id."' and id_vnotch = '".$id_vnotch."' and log < '".$interval."'  order by log desc) a order by a.log asc");
+		$query = $this->db->query("select * from (select * from history_vnotch where id_pos = '".$id."' and id_vnotch = '".$id_vnotch."' and log > '".$interval."'  order by log desc) a order by a.log asc");
        // $this->db->limit(10);
 		return $query;
     }
@@ -117,7 +108,17 @@ class Adminmodel extends CI_Model {
        // $this->db->limit(10);
 		return $query;
     }
-	
+
+	function get_his_citra($pos, $tgl) {
+        $tanggal = date('Y-m-d', strtotime($tgl));
+        if ($pos==0)
+		$query = $this->db->query("select * from history_citra where  date(log) = '".$tanggal."'  ");
+		else
+		$query = $this->db->query("select * from history_citra where id_pos = '".$pos."' and date(log) = '".$tanggal."'  ");
+       // $this->db->limit(10);
+		return $query;
+    }
+
 	function export_table($id, $tgl){
 		$query = $this->db->query("select * from history_log where id_pos = '".$id."'  and CAST(log AS DATE)='".$tgl."' order by log asc");
 		return $query;
@@ -155,13 +156,11 @@ class Adminmodel extends CI_Model {
         return $query;
 	}
 
-
 	function tabel_main3(){
 		$query = $this->db->query("SELECT * FROM `view_vnotch` INNER JOIN pos USING (id_pos) INNER JOIN vnotch USING (id_vnotch) order by id_vnotch ");
         return $query;
 	}
 	function running_text() {
-	
         $this->db->select('runtext');
         $this->db->where('status_runtext','aktif');
 		return $this->db->get('runtext');

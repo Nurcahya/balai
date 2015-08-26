@@ -27,7 +27,7 @@
 <body style="overflow-x:hidden; overflow-y:hidden; background:white;">
 	
     <!-- START OF RIGHT PANEL -->
-                	<div style="background:white;">
+                	<div style="background:black;">
                     
 						
                                             <?php 

@@ -6,6 +6,7 @@
 <title>ADMINISTRATOR MONITORING BALAI BENDUNGAN</title>
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.default.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/prettify/prettify.css" type="text/css" />
+<link rel="shortcut icon" href="<?php echo base_url();?>assets/img/star.png">
 <script type="text/javascript" src="<?php echo base_url();?>assets/prettify/prettify.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-migrate-1.1.1.min.js"></script>
