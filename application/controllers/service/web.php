@@ -19,18 +19,18 @@ class Web extends CI_Controller {
 
 	public function start()
 	{
-		$send = $this->webmodel->send();
-		$send2 = $this->webmodel->send2();
+		$kiriman = $this->webmodel->send();
+		$kiriman2 = $this->webmodel->send2();
 
 		$url = array();
 		$url2 = array();
 
-		foreach ($send->result() as $send) { 	
-		$url[]=('http://monitoringbendungan.com/service/web/grabcitra?id='.$send->id_pos.'&citra='.$send->nama_citra.'&waktu='.$send->log.'');
+		foreach ($kiriman->result() as $kirim) { 	
+		$url[]=('http://monitoringbendungan.com/service/web/grabcitra?id='.$kirim->id_pos.'&citra='.$kirim->nama_citra.'&waktu='.$kirim->log.'');
 		}  
 
-		foreach ($send2->result() as $send2) { 	
-		$url2[]=('http://monitoringbendungan.com/service/web/grabtma?id='.$send2->id_pos.'&tma='.$send2->TMA.'&waktu='.$send2->log.'');
+		foreach ($kiriman2->result() as $kirim) { 	
+		$url2[]=('http://monitoringbendungan.com/service/web/grabtma?id='.$kirim2->id_pos.'&tma='.$kirim2->TMA.'&waktu='.$kirim2->log.'');
 		} 
 
 		$r = $this->multiRequest($url);
